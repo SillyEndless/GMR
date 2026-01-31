@@ -112,3 +112,7 @@ Add `--record_video --video_path <output.mp4>` to any visualization command to r
 - Dexterous hand integration (G1 + Dex31)
 - Wheeled humanoid support (Galaxea R1 Pro)
 - Enhanced OptiTrack real-time streaming
+- Non-standard axes robot support examples
+
+**Advanced Features**:
+- **Non-standard Axes Support**: GMR system now supports robots with non-standard joint axes, which can be handled through rotation offset quaternions in the configuration files to accommodate arbitrary joint axis directions
