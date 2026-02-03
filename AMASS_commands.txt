@@ -1,0 +1,92 @@
+# AMASS运动数据使用命令示例
+
+## 基础命令格式
+python scripts/smplx_to_robot.py --smplx_file <smplx数据路径> --robot <机器人名称> --save_path <保存路径> --rate_limit
+
+## 示例命令（替换为你需要的路径和机器人）
+
+# 使用Male1一般动作数据
+python scripts/smplx_to_robot.py \
+  --smplx_file /home/z/motion_ws/data/AMASS/ACCAD-G/ACCAD/Male1General_c3d/General_A1_-_Stand_stageii.npz \
+  --robot unitree_g1 \
+  --save_path ./robot_motion_outputs/stand_motion.pkl \
+  --rate_limit
+
+# 使用武术踢腿动作
+python scripts/smplx_to_robot.py \
+  --smplx_file /home/z/motion_ws/data/AMASS/ACCAD-G/ACCAD/Male2MartialArtsKicks_c3d/G10-__roundhouse_leading_left_stageii.npz \
+  --robot unitree_g1 \
+  --save_path ./robot_motion_outputs/kick_motion.pkl \
+  --rate_limit
+
+# 使用左跳动作
+python scripts/smplx_to_robot.py \
+  --smplx_file /home/z/motion_ws/data/AMASS/ACCAD-G/ACCAD/Male1Running_c3d/Run_C24_-_quick_side_step_left_stageii.npz \
+  --robot unitree_g1 \
+  --save_path ./robot_motion_outputs/left_side_jump_motion.pkl \
+  --rate_limit
+
+# 使用右跳动作
+python scripts/smplx_to_robot.py \
+  --smplx_file /home/z/motion_ws/data/AMASS/ACCAD-G/ACCAD/Male1Running_c3d/Run_C25_-_quick_side_step_right_stageii.npz \
+  --robot unitree_g1 \
+  --save_path ./robot_motion_outputs/right_side_jump_motion.pkl \
+  --rate_limit
+
+## 支持的机器人列表
+# unitree_g1 (默认)
+# unitree_g1_with_hands
+# unitree_h1
+# unitree_h1_2
+# booster_t1
+# booster_t1_29dof
+# booster_k1
+# stanford_toddy
+# fourier_n1
+# engineai_pm01
+# kuavo_s45
+# hightorque_hi
+# galaxea_r1pro
+# berkeley_humanoid_lite
+# pnd_adam_lite
+# tienkung
+# fourier_gr3
+# openloong
+
+## 高级选项
+# 录制视频
+python scripts/smplx_to_robot.py \
+  --smplx_file /home/z/motion_ws/data/AMASS/ACCAD-G/ACCAD/Male1General_c3d/General_A1_-_Stand_stageii.npz \
+  --robot unitree_g1 \
+  --save_path ./robot_motion_outputs/stand_motion.pkl \
+  --rate_limit \
+  --record_video
+
+# 循环播放
+python scripts/smplx_to_robot.py \
+  --smplx_file /home/z/motion_ws/data/AMASS/ACCAD-G/ACCAD/Male1General_c3d/General_A1_-_Stand_stageii.npz \
+  --robot unitree_g1 \
+  --save_path ./robot_motion_outputs/stand_motion.pkl \
+  --rate_limit \
+  --loop
+
+## 批量处理命令示例
+# 处理整个目录的运动数据
+python scripts/smplx_to_robot_dataset.py \
+  --src_folder /home/z/motion_ws/data/AMASS/ACCAD-G/ACCAD/Male1General_c3d \
+  --tgt_folder ./robot_motion_outputs/male1_general \
+  --robot unitree_g1
+
+## 常见动作类别路径
+# 男性一般动作
+/home/z/motion_ws/data/AMASS/ACCAD-G/ACCAD/Male1General_c3d/
+# 男性武术踢腿
+/home/z/motion_ws/data/AMASS/ACCAD-G/ACCAD/Male2MartialArtsKicks_c3d/
+# 男性拳击
+/home/z/motion_ws/data/AMASS/ACCAD-G/ACCAD/Male2MartialArtsPunches_c3d/
+# 女性一般动作
+/home/z/motion_ws/data/AMASS/ACCAD-G/ACCAD/Female1General_c3d/
+# 走路动作
+/home/z/motion_ws/data/AMASS/ACCAD-G/ACCAD/Male1Walking_c3d/
+# 跑步动作
+/home/z/motion_ws/data/AMASS/ACCAD-G/ACCAD/Male1Running_c3d/

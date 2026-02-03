@@ -18,6 +18,7 @@ def load_smplx_file(smplx_file, smplx_body_model_path):
         "smplx",
         gender=str(smplx_data["gender"]),
         use_pca=False,
+        ext='pkl',
     )
     # print(smplx_data["pose_body"].shape)
     # print(smplx_data["betas"].shape)
@@ -77,6 +78,7 @@ def load_gvhmr_pred_file(gvhmr_pred_file, smplx_body_model_path):
         "smplx",
         gender="neutral",
         use_pca=False,
+        ext='pkl',
     )
     
     num_frames = smpl_params_global['body_pose'].shape[0]

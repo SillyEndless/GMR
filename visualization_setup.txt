@@ -1,0 +1,66 @@
+# MuJoCo可视化所需图形库安装命令
+
+# 检查Ubuntu版本
+lsb_release -a
+
+# 安装必要的图形库来支持MuJoCo可视化 (针对Ubuntu 24.04)
+sudo apt-get update && sudo apt-get install -y \
+  libgl1-mesa-glx \
+  libglib2.0-0t64 \
+  libxrandr2 \
+  libxss1 \
+  libgtk-3-0t64 \
+  libxdamage1 \
+  libxcomposite1 \
+  libnss3 \
+  libatk1.0-0t64 \
+  libcups2-dev \
+  libxinerama1 \
+  libpango-1.0-0 \
+  libxtst6 \
+  libxslt1.1 \
+  libxkbcommon0 \
+  libxcb-cursor0 \
+  libxcb-randr0 \
+  libxcb-shape0 \
+  libxcb-xfixes0 \
+  libxcb-xinerama0 \
+  libxcb-render0 \
+  libxcb-xkb1 \
+  libxcb1-dev \
+  libxcb-keysyms1-dev \
+  libxcb-image0-dev \
+  libxcb-shm0-dev \
+  libxcb-icccm4-dev \
+  libxcb-sync-dev \
+  libxcb-render-util0-dev \
+  libxcb-util-dev \
+  libxcb-xinerama0-dev
+
+# 如果上面的包名不适用，尝试这些替代包
+sudo apt-get install -y \
+  mesa-utils \
+  libglu1-mesa \
+  freeglut3-dev \
+  libglew-dev \
+  libglfw3-dev \
+  libosmesa6-dev \
+  libglvnd-dev \
+  libgles2-mesa-dev
+
+# 如果您遇到虚拟环境问题，可能需要重新激活环境
+conda deactivate
+conda activate gmr
+
+# 检查环境变量
+export DISPLAY=:1
+
+python scripts/smplx_to_robot.py \
+  --smplx_file /home/z/motion_ws/data/AMASS/ACCAD-G/ACCAD/Male1General_c3d/General_A1_-_Stand_stageii.npz \
+  --robot unitree_g1 \
+  --save_path ./robot_motion_outputs/stand_motion.pkl \
+  --rate_limit
+
+
+# 检查OpenGL是否可用
+glxinfo | grep -i opengl || echo "glxinfo not available, install mesa-utils first"
